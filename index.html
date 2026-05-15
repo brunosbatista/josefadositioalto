@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dona Josefa do Sítio Alto</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(191,63,2,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(240,158,0,0.12) 0%, transparent 50%),
+      #2a1208;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px 64px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Ornamento topo ── */
+  .ornament-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .ornament-line {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #F09E00);
+  }
+  .ornament-line.right {
+    background: linear-gradient(90deg, #F09E00, transparent);
+  }
+  .ornament-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #F09E00;
+  }
+  .ornament-diamond {
+    width: 8px; height: 8px;
+    background: #BF3F02;
+    transform: rotate(45deg);
+  }
+
+  /* ── Logo ── */
+  .logo-wrap {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    border: 2px solid #BF3F02;
+    box-shadow:
+      0 0 0 5px rgba(191,63,2,0.15),
+      0 0 0 10px rgba(240,158,0,0.07),
+      0 12px 40px rgba(0,0,0,0.5);
+    margin-bottom: 22px;
+    animation: fadeUp 0.55s ease 0.05s both;
+  }
+  .logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── Nome ── */
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.55s ease 0.1s both;
+  }
+  .name span {
+    color: #F09E00;
+  }
+
+  .tagline {
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    animation: fadeUp 0.55s ease 0.15s both;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    animation: fadeUp 0.55s ease 0.18s both;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240,158,0,0.35));
+  }
+  .divider::after {
+    background: linear-gradient(90deg, rgba(240,158,0,0.35), transparent);
+  }
+  .divider span {
+    font-size: 11px;
+    color: rgba(240,158,0,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── Botões ── */
+  .links-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(191, 63, 2, 0.18);
+    border: 1px solid rgba(191, 63, 2, 0.4);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(191,63,2,0.3) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+
+  .link-btn:hover {
+    background: rgba(191, 63, 2, 0.35);
+    border-color: #BF3F02;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(191,63,2,0.25);
+  }
+  .link-btn:hover::before { opacity: 1; }
+  .link-btn:active { transform: translateY(0); }
+
+  .btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    background: rgba(191,63,2,0.3);
+    border: 1px solid rgba(191,63,2,0.4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-text { flex: 1; position: relative; z-index: 1; }
+  .btn-text strong {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+  }
+  .btn-text span {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .btn-arrow {
+    font-size: 20px;
+    color: rgba(240,158,0,0.5);
+    transition: transform 0.2s ease, color 0.2s ease;
+    position: relative; z-index: 1;
+  }
+  .link-btn:hover .btn-arrow {
+    transform: translateX(4px);
+    color: #F09E00;
+  }
+
+  /* animações escalonadas */
+  .link-btn:nth-child(1) { animation: fadeUp 0.5s ease 0.25s both; }
+  .link-btn:nth-child(2) { animation: fadeUp 0.5s ease 0.33s both; }
+  .link-btn:nth-child(3) { animation: fadeUp 0.5s ease 0.41s both; }
+  .link-btn:nth-child(4) { animation: fadeUp 0.5s ease 0.49s both; }
+  .link-btn:nth-child(5) { animation: fadeUp 0.5s ease 0.57s both; }
+
+  /* ── Ornamento base ── */
+  .ornament-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 0.5s ease 0.65s both;
+  }
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+  .location-dot { color: #BF3F02; }
+
+  .ornament-bottom-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .ob-line {
+    width: 30px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240,158,0,0.3));
+  }
+  .ob-line.r {
+    background: linear-gradient(90deg, rgba(240,158,0,0.3), transparent);
+  }
+  .ob-diamond {
+    width: 5px; height: 5px;
+    background: rgba(240,158,0,0.4);
+    transform: rotate(45deg);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="ornament-top">
+    <div class="ornament-line"></div>
+    <div class="ornament-dot"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-dot"></div>
+    <div class="ornament-line right"></div>
+  </div>
+
+  <div class="logo-wrap">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/josefa-do-sitio-alto.firebasestorage.app/o/site-josefadositioalto.com.br%2Fimagens%2Fchannels4_profile.jpg?alt=media&token=ef8042ff-9a01-4700-9e59-6a3d2ccd2985"
+      alt="Dona Josefa do Sítio Alto"
+    >
+  </div>
+
+  <h1 class="name">Mestra <span>Josefa</span><br>do Sítio Alto</h1>
+  <p class="tagline">Patrimônio Vivo da Cultura Sergipana</p>
+
+  <div class="divider"><span>Presença Digital</span></div>
+
+  <div class="links-group">
+
+    <a class="link-btn" href="https://josefadositioalto.com/" target="_blank" rel="noopener">
+      <div class="btn-icon">🌐</div>
+      <div class="btn-text">
+        <strong>Site Oficial</strong>
+        <span>josefadositioalto.com</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.instagram.com/josefadositioalto" target="_blank" rel="noopener">
+      <div class="btn-icon">📷</div>
+      <div class="btn-text">
+        <strong>Instagram</strong>
+        <span>@josefadositioalto</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://youtube.com/@josefadositioalto" target="_blank" rel="noopener">
+      <div class="btn-icon">▶️</div>
+      <div class="btn-text">
+        <strong>YouTube</strong>
+        <span>Vídeos e entrevistas</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://api.whatsapp.com/send?phone=5579999365635" target="_blank" rel="noopener">
+      <div class="btn-icon">💬</div>
+      <div class="btn-text">
+        <strong>WhatsApp</strong>
+        <span>Agendamentos e contato</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="mailto:josefaquilombolaa@gmail.com">
+      <div class="btn-icon">✉️</div>
+      <div class="btn-text">
+        <strong>E-mail</strong>
+        <span>josefaquilombolaa@gmail.com</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+  </div>
+
+  <div class="ornament-bottom">
+    <div class="location">
+      <span class="location-dot">◆</span>
+      <span>Quilombo Sítio Alto &nbsp;·&nbsp; Simão Dias, SE</span>
+    </div>
+    <div class="ornament-bottom-line">
+      <div class="ob-line"></div>
+      <div class="ob-diamond"></div>
+      <div class="ob-line r"></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
